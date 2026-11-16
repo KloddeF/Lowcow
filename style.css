@@ -1,0 +1,327 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: system-ui, sans-serif;
+    background: #000;
+    color: #eee;
+    min-height: 100vh;
+}
+
+/* ===== Экраны ===== */
+.screen {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    gap: 24px;
+    background: #000;
+}
+
+#screen-game {
+    min-height: 0;
+    height: 100vh;
+    padding: 0;
+    overflow: hidden;
+}
+
+.screen.hidden {
+    display: none;
+}
+
+/* ===== Оверлей-заставка с картинкой ===== */
+.splash-image-overlay {
+    position: fixed;
+    inset: 0;
+    background: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 200;
+    transition: opacity 0.4s ease;
+}
+
+.splash-image-overlay.hidden {
+    display: none;
+}
+
+.splash-image-overlay.fade-out {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.splash-image {
+    max-width: 90vw;
+    max-height: 90vh;
+    object-fit: contain;
+}
+
+/* заставка */
+.splash-title {
+    font-size: 72px;
+    letter-spacing: 8px;
+    margin: 0;
+    color: #f2c94c;
+    text-align: center;
+}
+
+.btn-large {
+    padding: 18px 32px;
+    font-size: 20px;
+}
+
+/* выбор уровня */
+.screen-title {
+    margin: 0;
+    font-size: 28px;
+    color: #eee;
+}
+
+.levels-block {
+    padding: 16px;
+    background: #111;
+    border-radius: 6px;
+    min-width: 280px;
+}
+
+.levels-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.level-btn {
+    padding: 16px;
+    font-size: 18px;
+    border: none;
+    border-radius: 6px;
+    background: #222;
+    color: #eee;
+    cursor: pointer;
+    transition: background 0.15s;
+}
+
+.level-btn:hover {
+    background: #333;
+}
+
+/* ===== Игровой экран ===== */
+.app-wrap {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    overflow: hidden;
+    background: #000;
+}
+
+.app-scaler {
+    position: relative;
+    flex-shrink: 0;
+}
+
+.app {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    transform-origin: top left;
+}
+
+canvas {
+    background: #000;
+    border: 2px solid #444;
+    border-radius: 6px;
+    display: block;
+    cursor: pointer;
+}
+
+.panel {
+    width: 260px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.btn {
+    padding: 12px 16px;
+    font-size: 16px;
+    border: none;
+    border-radius: 6px;
+    background: #222;
+    color: #eee;
+    cursor: pointer;
+    transition: background 0.15s;
+}
+
+.btn:hover {
+    background: #333;
+}
+
+.btn-primary {
+    background: #2e8b57;
+    font-weight: bold;
+}
+
+.btn-primary:hover {
+    background: #38a868;
+}
+
+.btn:disabled {
+    background: #111;
+    color: #555;
+    cursor: not-allowed;
+}
+
+.arrows-block {
+    margin-top: 10px;
+    padding: 12px;
+    background: #111;
+    border-radius: 6px;
+}
+
+.arrows-block h3 {
+    margin: 0 0 8px;
+    font-size: 15px;
+}
+
+.arrows-counter {
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #b0b0c0;
+}
+
+.arrows-picker {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6px;
+}
+
+.arrow-btn {
+    padding: 12px;
+    font-size: 22px;
+    border: none;
+    border-radius: 6px;
+    background: #222;
+    color: #eee;
+    cursor: pointer;
+}
+
+.arrow-btn:hover {
+    background: #333;
+}
+
+.arrow-btn.active {
+    background: #2e8b57;
+}
+
+.hint {
+    font-size: 12px;
+    color: #888;
+    margin: 8px 0 0;
+}
+
+.cups-counter {
+    padding: 10px 12px;
+    background: #111;
+    border-radius: 6px;
+    font-size: 15px;
+    text-align: center;
+}
+
+.cups-counter span {
+    font-weight: bold;
+    color: #f2c94c;
+}
+
+/* модалка */
+.modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    padding: 20px;
+}
+
+.modal.hidden {
+    display: none;
+}
+
+.modal-content {
+    background: #111;
+    border: 2px solid #333;
+    border-radius: 8px;
+    padding: 24px;
+    min-width: 280px;
+    max-width: 420px;
+    width: 100%;
+    text-align: center;
+}
+
+.modal-content h2 {
+    margin: 0 0 10px;
+    font-size: 20px;
+    color: #f2c94c;
+}
+
+.modal-content p {
+    margin: 0 0 20px;
+    color: #b0b0c0;
+}
+
+.modal-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.modal-actions .btn {
+    min-width: 100px;
+}
+
+@media (max-width: 560px) {
+    .splash-title {
+        font-size: 42px;
+        letter-spacing: 4px;
+    }
+
+    .btn-large {
+        padding: 14px 20px;
+        font-size: 17px;
+        width: 100%;
+        max-width: 320px;
+    }
+
+    .screen-title {
+        font-size: 22px;
+    }
+
+    .levels-block {
+        min-width: 0;
+        width: 100%;
+        max-width: 360px;
+    }
+
+    .levels-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .modal-actions {
+        flex-direction: column;
+    }
+
+    .modal-actions .btn {
+        width: 100%;
+    }
+}

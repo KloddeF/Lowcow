@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Коровий марафон</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ЭКРАН 0: Картинка-заставка -->
+    <div id="splash-image-overlay" class="splash-image-overlay">
+        <img src="images/splash.jpg" alt="Заставка" class="splash-image">
+    </div>
+
+    <!-- ЭКРАН 1: Заставка -->
+    <div id="screen-splash" class="screen">
+        <h3 class="title">Заглушка, придумать картинку</h3>
+        <button id="btn-start-game" class="btn btn-primary btn-large">
+            Хочу гонять корову!
+        </button>
+    </div>
+
+    <!-- ЭКРАН 2: Выбор уровня -->
+    <div id="screen-levels" class="screen hidden">
+        <h2 class="screen-title">Выбор уровня</h2>
+        <div class="levels-block">
+            <div id="levels-list" class="levels-list"></div>
+        </div>
+        <button id="btn-levels-back" class="btn">Назад</button>
+    </div>
+
+    <!-- ЭКРАН 3: Игра -->
+    <div id="screen-game" class="screen hidden">
+        <div class="app-wrap">
+            <div class="app-scaler" id="game-scaler">
+                <div class="app" id="game-app">
+                    <canvas id="game-canvas"></canvas>
+
+                    <aside class="panel">
+                        <button id="btn-go" class="btn btn-primary">Пошла!</button>
+                        <button id="btn-restart" class="btn">Переиграть</button>
+                        <button id="btn-levels" class="btn">Выбрать уровень</button>
+
+                        <div class="cups-counter">
+                            Кубки: <span id="cups-collected">0</span> / <span id="cups-total">0</span>
+                        </div>
+
+                        <div class="arrows-block">
+                            <h3>Стрелки</h3>
+                            <div class="arrows-counter">
+                                Осталось: <span id="arrows-left">0</span>
+                            </div>
+                            <div class="arrows-picker">
+                                <button class="arrow-btn" data-dir="up">↑</button>
+                                <button class="arrow-btn" data-dir="right">→</button>
+                                <button class="arrow-btn" data-dir="down">↓</button>
+                                <button class="arrow-btn" data-dir="left">←</button>
+                            </div>
+                            <p class="hint">Выбери стрелку, затем кликни по клетке</p>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модалка победы -->
+    <div id="win-modal" class="modal hidden">
+        <div class="modal-content">
+            <h2 id="win-title">Уровень пройден!</h2>
+            <p id="win-text">Хотите перейти к следующему уровню?</p>
+            <div class="modal-actions">
+                <button id="btn-next-level" class="btn btn-primary">Перейти</button>
+                <button id="btn-cancel-win" class="btn">Отмена</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модалка проигрыша -->
+    <div id="lose-modal" class="modal hidden">
+        <div class="modal-content">
+            <h2 id="lose-title">Корова попала в беду!</h2>
+            <p id="lose-text">Попробуйте ещё раз.</p>
+            <div class="modal-actions">
+                <button id="btn-restart-lose" class="btn btn-primary">Переиграть</button>
+                <button id="btn-cancel-lose" class="btn">Отмена</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/config.js"></script>
+
+    <script src="js/entities/cow.js"></script>
+    <script src="js/entities/wall.js"></script>
+    <script src="js/entities/arrow.js"></script>
+    <script src="js/entities/pit.js"></script>
+    <script src="js/entities/dynamicWall.js"></script>
+    <script src="js/entities/negativeCow.js"></script>
+
+    <script src="js/level/level.js"></script>
+    <script src="js/level/levelData.js"></script>
+
+    <script src="js/game.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
